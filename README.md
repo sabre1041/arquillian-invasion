@@ -58,6 +58,6 @@ The Persistence and Services projects can be tested in the cloud on OpenShift th
      cd <app_name>
      git remote add upstream -m master https://github.com/sabre1041/arquillian-invasion.git
      git pull -s -X theirs upstream master
-     git push master
+     git push origin master
      
  The application should be available at the root of the application context
