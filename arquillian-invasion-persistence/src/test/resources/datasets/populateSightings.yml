@@ -1,0 +1,7 @@
+Sighting:
+  - id: 5
+    description: 'Alien Sighting'
+    version: 0
+  - id: 6
+    description: 'Alien Sighting2'
+    version: 0    

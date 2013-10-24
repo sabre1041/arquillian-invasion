@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<arquillian xmlns="http://jboss.org/schema/arquillian"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://jboss.org/schema/arquillian http://jboss.org/schema/arquillian/arquillian_1_0.xsd">
+
+	<defaultProtocol type="Servlet 3.0" />
+
+	<!-- Default Local Instance Configuration -->
+	<container qualifier="JBOSS_AS_REMOTE_7.X" default="true">
+		<configuration>
+			<property name="managementAddress">127.0.0.1</property>
+			<property name="managementPort">9999</property>
+		</configuration>
+	</container>
+
+	<!-- Will use $JBOSS_HOME Environment Variable by default. Uncomment if variable not set -->
+	<container qualifier="JBOSS_AS_MANAGED_7.X">
+		<!--configuration>
+			<property name="jbossHome">/opt/jboss-eap-6.1</property>
+		</configuration-->
+	</container>
+
+	
+	<!-- Openshift Express Container. Uncomment passphrase property if SSH key has one defined -->
+	<container qualifier="openshift-express">
+		<configuration>
+			<property name="login">LOGIN@EMAIL.COM</property>
+			<property name="namespace">NAMESPACE</property>
+			<property name="application">APPLICATION_NAME</property>
+			<property name="sshUserName">SSH_USER</property>	
+			<!--property name="passphrase">PASSPHRASE</property-->
+			
+      		<property name="disableStrictHostChecking">true</property>			
+		</configuration>
+	</container>
+
+	<extension qualifier="persistence-dbunit">
+		<property name="datatypeFactory">org.dbunit.ext.h2.H2DataTypeFactory</property>
+	</extension>
+
+</arquillian>

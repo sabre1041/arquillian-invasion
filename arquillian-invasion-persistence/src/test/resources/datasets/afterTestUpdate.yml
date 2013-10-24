@@ -1,0 +1,8 @@
+Sighting:
+  - id: 5
+    description: 'Alien Sighting'
+    zip: '60657'
+    version: 1
+  - id: 6
+    description: 'Alien Sighting2'
+    version: 0        

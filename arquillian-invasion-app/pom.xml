@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>arquillian-invasion</artifactId>
+		<groupId>com.redhat.arquillian</groupId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../pom.xml</relativePath>		
+	</parent>
+	<artifactId>arquillian-invasion-app</artifactId>
+	<packaging>ear</packaging>
+
+	<name>Arquillian Invasion - Application</name>
+
+	<build>
+		<finalName>arquillian-invasion-app</finalName>
+		<plugins>
+			<plugin>
+				<artifactId>maven-ear-plugin</artifactId>
+				<version>${maven.ear.plugin.version}</version>
+				<configuration>
+					<version>6</version>
+					<defaultLibBundleDir>lib</defaultLibBundleDir>
+					<modules>
+						<webModule>
+							<groupId>com.redhat.arquillian</groupId>
+							<artifactId>arquillian-invasion-services</artifactId>
+							<contextRoot>/arquillian-invasion-services</contextRoot>
+							<bundleFileName>arquillian-invasion-services.war</bundleFileName>
+						</webModule>
+						<webModule>
+							<groupId>com.redhat.arquillian</groupId>
+							<artifactId>arquillian-invasion-web</artifactId>
+							<contextRoot>/arquillian-invasion-web</contextRoot>
+							<bundleFileName>arquillian-invasion-web.war</bundleFileName>
+						</webModule>
+					</modules>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<dependencies>
+		<dependency>
+			<groupId>com.redhat.arquillian</groupId>
+			<artifactId>arquillian-invasion-services</artifactId>
+			<version>${project.version}</version>
+			<type>war</type>
+		</dependency>
+		<dependency>
+			<groupId>com.redhat.arquillian</groupId>
+			<artifactId>arquillian-invasion-web</artifactId>
+			<version>${project.version}</version>
+			<type>war</type>
+		</dependency>
+	</dependencies>
+
+	<profiles>
+		<profile>
+			<id>openshift</id>
+			<build>
+				<finalName>arquillian-invasion-app</finalName>
+				<plugins>
+					<plugin>
+						<artifactId>maven-ear-plugin</artifactId>
+						<version>${maven.ear.plugin.version}</version>
+						<configuration>
+							<outputDirectory>deployments</outputDirectory>
+							<version>6</version>
+							<defaultLibBundleDir>lib</defaultLibBundleDir>
+							<modules>
+								<webModule>
+									<groupId>com.redhat.arquillian</groupId>
+									<artifactId>arquillian-invasion-services</artifactId>
+									<contextRoot>/arquillian-invasion-services</contextRoot>
+									<bundleFileName>arquillian-invasion-services.war</bundleFileName>
+								</webModule>
+								<webModule>
+									<groupId>com.redhat.arquillian</groupId>
+									<artifactId>arquillian-invasion-web</artifactId>
+									<contextRoot>/</contextRoot>
+									<bundleFileName>arquillian-invasion-web.war</bundleFileName>
+								</webModule>
+							</modules>
+						</configuration>
+					</plugin>
+				</plugins>
+
+			</build>
+		</profile>
+	</profiles>
+
+
+</project>
