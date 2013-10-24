@@ -54,6 +54,9 @@ The Persistence and Services projects can be tested in the cloud on OpenShift th
  
  These instructions assume you have the necessary client tooling installed and configured on your local machine. Create the application, required cartridges, and pull in the sample code with the following command:
  
-     rhc app create <app_name> jbosseap-6 mysql-5.1 --from-code=https://github.com/sabre1041/arquillian-invasion.git
+     rhc app create <app_name> jbosseap-6 mysql-5.1 
+     cd <app_name>
+     git remote add upstream -m master https://github.com/sabre1041/arquillian-invasion.git
+     git pull -s -X theirs upstream master
      
  The application should be available at the root of the application context
