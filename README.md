@@ -57,7 +57,7 @@ The Persistence and Services projects can be tested in the cloud on OpenShift th
      rhc app create <app_name> jbosseap-6 mysql-5.1 
      cd <app_name>
      git remote add upstream -m master https://github.com/sabre1041/arquillian-invasion.git
-     git pull -s -X theirs upstream master
+     git pull -s recursive -X theirs upstream master
      git push origin master
      
  The application should be available at the root of the application context
